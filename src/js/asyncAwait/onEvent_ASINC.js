@@ -11,5 +11,5 @@ loadMoreBtn.addEventListener('click', onClickLoad);
 
 searchForm.searchButton.addEventListener('click', OnClickSearch);
 
-window.addEventListener('scroll', throttle(() => { onScrollLoad() }, 1000));
+window.addEventListener('scroll', onScrollLoad);
 

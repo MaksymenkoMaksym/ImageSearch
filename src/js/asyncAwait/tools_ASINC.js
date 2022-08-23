@@ -47,8 +47,8 @@ export async function onClickLoad() {
                 .map((el) => { return renderMarkup(el) })
                 .join(''));
         gallery.refresh();
-        scroll();
         endOfResults.call(this, totalHits);
+        scroll();
     } catch (err) {
         if (err.message === API_RATE_LIMIT) {
             Notify.warning(API_RATE_LIMIT)
@@ -142,7 +142,7 @@ function endOfResults(totalHits) {
     const perPageNum = imgCollecion.getItemsPerPage();
     const maxPages = Math.ceil(totalHits / perPageNum);
     if (pageNum === maxPages) {
-        this.style.display = "none";
+        refs.loadMoreBtn.style.display = "none";
         return Notify.info(END_OF_RESULTS);
     }
 }
@@ -152,7 +152,6 @@ function scroll() {
     const { height: cardHeight } = document
         .querySelector(".gallery_list")
         .firstElementChild.getBoundingClientRect();
-    console.log(cardHeight);
 
     window.scrollBy({
         top: cardHeight * 2,
@@ -161,12 +160,10 @@ function scroll() {
 }
 
 
-export function onScrollLoad(event) {
+export function onScrollLoad() {
     const { height: cardHeight } = document.querySelector(".gallery_list").lastElementChild
         .getBoundingClientRect();
-    const { height: cardListHeight, bottom } = document.querySelector(".gallery").getBoundingClientRect();
-    if (pageYOffset + cardHeight >= (cardListHeight - cardHeight)) {
+    if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
         onClickLoad()
     }
-
 }
