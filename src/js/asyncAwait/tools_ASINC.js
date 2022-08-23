@@ -46,9 +46,9 @@ export async function onClickLoad() {
             .insertAdjacentHTML("beforeend", requiredObjects(hits)
                 .map((el) => { return renderMarkup(el) })
                 .join(''));
-        gallery.refresh();
-        endOfResults.call(this, totalHits);
-        scroll();
+        await gallery.refresh();
+        await endOfResults.call(this, totalHits);
+        await scroll();
     } catch (err) {
         if (err.message === API_RATE_LIMIT) {
             Notify.warning(API_RATE_LIMIT)
@@ -72,7 +72,7 @@ export async function OnClickSearch(event) {
         Notify.success(`Hooray! We found ${totalHits} images.`);
 
         if (totalHits > imgCollecion.getItemsPerPage()) {
-            refs.loadMoreBtn.style.display = "block";
+            // refs.loadMoreBtn.style.display = "block";
         }
 
         refs.gallery.innerHTML = `<ul class="gallery_list list">
@@ -160,10 +160,8 @@ function scroll() {
 }
 
 
-export function onScrollLoad() {
-    const { height: cardHeight } = document.querySelector(".gallery_list").lastElementChild
-        .getBoundingClientRect();
-    if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
-        onClickLoad()
+export async function onScrollLoad() {
+    if (window.scrollY + window.innerHeight >= (document.body.scrollHeight)) {
+        await onClickLoad();
     }
 }
