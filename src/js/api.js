@@ -9,20 +9,20 @@ export const searchParams = new URLSearchParams({
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: true,
-    per_page: 200,
+    per_page: 40,
     page: 1,
 });
 
 export function fetchData(searchParams) {
     return fetch(`${BASE_URL}?${searchParams}`).then(
         response => {
+            console.log(response)
             // if (!response.ok) {
             //     throw new Error(response.status);
             // }
             if (response.status === 429) {
                 throw new Error("Error - 429");
             }
-
             return response.json()
         }
     )

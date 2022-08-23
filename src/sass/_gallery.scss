@@ -1,13 +1,15 @@
 .gallery {
-  max-width: 1600px;
   margin-right: auto;
   margin-left: auto;
+  padding-top: 75px;
+  padding-bottom: 50px;
 }
 
 .gallery_list {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
+  justify-content: center;
+  gap: 30px;
 }
 
 .list {
@@ -17,48 +19,45 @@
 }
 
 .list_item {
-  display: block;
-  width: 350px;
+  display: flex;
+  flex-basis: calc((100% - 90px) / 4);
+
+  box-shadow: 4px 4px 4px #b2b8c9, -4px -4px 4px #f0f8ff;
+  background: #d1d5da;
+  -webkit-box-shadow: 4px 4px 4px #b2b8c9, -4px -4px 4px #f0f8ff;
+  border-radius: 15px;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 
 .photo-card {
   display: flex;
   flex-direction: column;
 }
-
+a {
+  flex-grow: 1;
+}
+.photo-card_img {
+  object-fit: cover;
+  flex-grow: 1;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+}
 .info {
   display: flex;
+  justify-content: space-around;
   gap: 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: rgb(183, 186, 190);
+  min-height: 55px;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .info-item {
-  border: 1px solid rgb(69, 134, 219);
+  font-size: 14px;
+  text-align: center;
   border-radius: 5px;
 }
-/*
- `<li>
- <div class="photo-card">
-
-  <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-
-  <div class="info">
-
-    <p class="info-item">
-      <b>Likes: ${likes}</b>
-    </p>
-
-    <p class="info-item">
-      <b>Views${views}</b>
-    </p>
-    <p class="info-item">
-      <b>Comments${comments}</b>
-    </p>
-    <p class="info-item">
-      <b>Downloads${downloads}</b>
-    </p>
-
-  </div>
-
-</div>
-</li>`
-*/
