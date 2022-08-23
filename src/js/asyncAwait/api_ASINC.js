@@ -91,7 +91,7 @@ export class ImgApi {
 
     async getData() {
         const response = await axios.request(this.config);
-        console.log(response);
+        // console.log(response);
         if (response.status === 429) {
             throw new Error("API rate limit exceeded");
         }

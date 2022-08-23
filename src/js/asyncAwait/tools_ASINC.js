@@ -165,13 +165,8 @@ export function onScrollLoad(event) {
     const { height: cardHeight } = document.querySelector(".gallery_list").lastElementChild
         .getBoundingClientRect();
     const { height: cardListHeight, bottom } = document.querySelector(".gallery").getBoundingClientRect();
-
-    console.log('pageYOffset', pageYOffset);
-    console.log('pageYOffset + bottom', pageYOffset + bottom);
-    console.log('cardListHeight', cardListHeight - bottom);
-    console.log('cardHeight', cardHeight);
-    // if (pageYOffset >= (cardListHeight - bottom)) {
-    //     onClickLoad()
-    // }
+    if (pageYOffset + cardHeight >= (cardListHeight - cardHeight)) {
+        onClickLoad()
+    }
 
 }
