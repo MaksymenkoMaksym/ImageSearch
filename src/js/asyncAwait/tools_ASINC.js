@@ -34,8 +34,8 @@ export async function onClickLoad() {
         imgCollecion.setNextPage();
         const { hits, totalHits } = await imgCollecion.getData();
 
-        document.querySelector('.gallery_list')
-            .insertAdjacentHTML("beforeend", requiredObjects(hits)
+        await document.querySelector('.gallery_list')
+            ?.insertAdjacentHTML("beforeend", requiredObjects(hits)
                 .map((el) => { return renderMarkup(el) })
                 .join(''));
         await gallery.refresh();
@@ -47,8 +47,6 @@ export async function onClickLoad() {
         }
         console.log('Name:', err.name, 'Message', err.message);
     }
-
-
 }
 
 export async function OnClickSearch(event) {
@@ -154,6 +152,7 @@ function scroll() {
 
 export async function onScrollLoad() {
     if (window.scrollY + window.innerHeight >= (document.body.scrollHeight)) {
+        console.log('ggggg');
         await onClickLoad();
     }
 }

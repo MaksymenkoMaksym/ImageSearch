@@ -16,10 +16,6 @@ export const searchParams = new URLSearchParams({
 export function fetchData(searchParams) {
     return fetch(`${BASE_URL}?${searchParams}`).then(
         response => {
-            console.log(response)
-            // if (!response.ok) {
-            //     throw new Error(response.status);
-            // }
             if (response.status === 429) {
                 throw new Error("Error - 429");
             }
