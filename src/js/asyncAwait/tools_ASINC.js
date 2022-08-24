@@ -1,7 +1,6 @@
 import { Notify } from "notiflix";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import InfiniteScroll from 'infinite-scroll';
 
 import { ImgApi } from "./api_ASINC";
 
@@ -14,16 +13,9 @@ const RESULTS = "Hooray! We found totalHits images.";
 
 const imgCollecion = new ImgApi();
 let gallery = new SimpleLightbox('.photo-card a');
-let infScroll = new InfiniteScroll('.gallery', {
-    responseType: 'text',
-    history: false,
-    append: undefined,
-    path() {
-        return `https://newsapi.org/v2/everything?q=bitcoin&apiKey=bb47a995514a49758140b073ef1103f5`;
-    },
-});
 
-console.log(infScroll);
+
+
 // зберігання даних з сервера////////////
 const ww2 = localStorage.getItem("ww");//
 const dataFromStorage = JSON.parse(ww2);////////////
